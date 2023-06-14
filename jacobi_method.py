@@ -1,7 +1,8 @@
+import math as math 
 import pandas as pd
 from rich import print
 
-#TODO: PLOTAR A DISTANCIA, VERIFICAR COM PROFESSOR
+
 
 def criando_tabela_caso1(valores):
     print("\n\n\n")
@@ -49,19 +50,25 @@ def caso_sistema_2():
         resultado_x1 = float(x1(valor_x2))
         resultado_x2 = float(x2(valor_x1))
         k += 1
-        if k%2 == 0:
-            e = abs(valor_x1-resultado_x1)
+
+        valor_e = abs(valor_x1-resultado_x1)
+        valor_e2 = abs(valor_x2-resultado_x2)
+
+        if valor_e>valor_e2:
+            e=valor_e
         else:
-            e = abs(valor_x2-resultado_x2)
+            e=valor_e2
         
         lista_adicionar_valores.append([k, resultado_x1, resultado_x2, e])
         valor_x1=resultado_x1
         valor_x2=resultado_x2
 
+    distancia = math.sqrt((a-valor_x1)**2 + (b-valor_x2)**2)
+
     print("\n\n\n")
     print(f":fireworks: [green]A solução aproximada é [{valor_x1}, {valor_x2}] [/green]")
     print("\n")
-    print(":fireworks: [blue]A distância entre a solução exata e aproximada é: [/blue]")
+    print(f":fireworks: [blue]A distância entre a solução exata e aproximada é:{distancia} [/blue]")
     criando_tabela_caso1(lista_adicionar_valores)
 
 
@@ -74,7 +81,6 @@ caso_sistema_2()
     
 
    
-
 
 
 
